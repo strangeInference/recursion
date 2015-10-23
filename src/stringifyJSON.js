@@ -31,7 +31,7 @@ var stringifyJSON = function(obj) {
   }
   if (typeof obj === "object"){
     for (var item in obj){
-      if (obj[item] !== undefined){
+      if (obj[item] !== undefined && typeof obj[item] !== "function"){
         result += stringifyJSON(item) + ':' + stringifyJSON(obj[item]) + ',';
       }
     }
@@ -40,4 +40,4 @@ var stringifyJSON = function(obj) {
   }
   return result
 };
-console.log(stringifyJSON({a: undefined}));
+console.log(stringifyJSON({functions: function(){}}));

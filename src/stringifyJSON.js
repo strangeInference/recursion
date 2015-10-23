@@ -21,15 +21,13 @@ var stringifyJSON = function(obj) {
     return String(obj);
   }
   if (Array.isArray(obj)){
-    var recArr = function(obj){
-      var arr = '';
-      arr += stringifyJSON(obj.shift());
-      if (obj.length){
-        arr += ',' + recArr(obj);
+    for (var i = 0; i < obj.length; i++){
+      if (obj[i] !== undefined){
+        result += stringifyJSON(obj[i]) + ','; 
       }
-      return arr;
-    };
-    return '[' + recArr(obj) + ']';
+    }
+    result = result.slice(0, result.length - 1);
+    return '[' + result + ']';
   }
   if (typeof obj === "object"){
     for (var item in obj){

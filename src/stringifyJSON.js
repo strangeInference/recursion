@@ -40,4 +40,3 @@ var stringifyJSON = function(obj) {
   }
   return result
 };
-console.log(stringifyJSON({functions: function(){}}));
